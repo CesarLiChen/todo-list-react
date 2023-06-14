@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Form(props) {
-  
+  const [name, setName] = useState("");
+
+  function handleChange(event) {
+    console.log("typing");
+    setName(event.target.value);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    props.onAddTask("Message from Form.js");
+    name.length > 0 ? props.onAddTask(name): alert("Not a valid task name");
+    setName("");
   }
 
   return (
@@ -20,6 +27,8 @@ function Form(props) {
         className="input input__lg"
         name="text"
         autoComplete="off"
+        value={name}
+        onChange={handleChange}
       />
       <button type="submit" className="btn btn__primary btn__lg">
         Add
