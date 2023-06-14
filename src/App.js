@@ -28,6 +28,15 @@ function App(props) {
 
   function toggleTaskCompleted(id) {
     console.log(tasks[0]);
+
+    const updatedTasks = tasks.map( (task) => {
+      if(id === task.id) {
+        return {...task, completed: !task.completed};
+      } else {
+        return task;
+      }
+    });
+    setTasks(updatedTasks);
   }
   
   return (
