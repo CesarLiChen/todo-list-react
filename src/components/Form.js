@@ -1,8 +1,14 @@
 import React from "react";
 
 function Form(props) {
+  
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.onAddTask("Message from Form.js");
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" className="label__lg">
           What needs to be done?
