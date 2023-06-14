@@ -18,12 +18,17 @@ function App(props) {
       id={task.id} 
       name={task.name} 
       completed={task.completed}
-      key={task.id} // 'key' special prop managed by React  
+      key={task.id} // 'key' special prop managed by React 
+      onToggleTaskCompleted={toggleTaskCompleted} 
     />
   ));
 
   const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
   const tasksHeading = `${taskList.length} ${tasksNoun} remaining`;
+
+  function toggleTaskCompleted(id) {
+    console.log(tasks[0]);
+  }
   
   return (
     <div className="todoapp stack-large">
