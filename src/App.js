@@ -20,6 +20,7 @@ function App(props) {
       completed={task.completed}
       key={task.id} // 'key' special prop managed by React 
       onToggleTaskCompleted={toggleTaskCompleted} 
+      onDeleteTask={deleteTask}
     />
   ));
 
@@ -37,6 +38,10 @@ function App(props) {
       }
     });
     setTasks(updatedTasks);
+  }
+
+  function deleteTask(id) {
+    console.log(id);
   }
   
   return (
