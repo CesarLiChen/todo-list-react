@@ -9,7 +9,6 @@ function App(props) {
   console.log(tasks);
 
   function addTask(name) {
-    alert(name);
     const newTask = {id: `todo-${nanoid()}`, name, completed: false};
     setTasks([...tasks, newTask]);
   }
