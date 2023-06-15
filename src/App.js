@@ -21,6 +21,7 @@ function App(props) {
       key={task.id} // 'key' special prop managed by React 
       onToggleTaskCompleted={toggleTaskCompleted} 
       onDeleteTask={deleteTask}
+      onEditTask={editTask}
     />
   ));
 
@@ -29,7 +30,6 @@ function App(props) {
 
   function toggleTaskCompleted(id) {
     console.log(tasks[0]);
-
     const updatedTasks = tasks.map( (task) => {
       if(id === task.id) {
         return {...task, completed: !task.completed};
@@ -44,6 +44,17 @@ function App(props) {
     console.log(id);
     const tasksWithoutDeleted = tasks.filter(task => task.id !== id);
     setTasks(tasksWithoutDeleted);
+  }
+
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map( (task) => {
+      if (id === task.id) {
+        return {...task, name: newName};
+      } else {
+        return task;
+      }
+    });
+    setTasks(editedTaskList);
   }
   
   return (
