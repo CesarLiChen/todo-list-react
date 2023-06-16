@@ -3,14 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Todo from "./components/Todo"
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
-
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
+import usePrevious from "./usePrevious";
 
 const FILTER_MAP = {
   All: () => true,

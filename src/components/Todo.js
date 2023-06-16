@@ -1,12 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
+import usePrevious from "../usePrevious";
 
 function Todo(props) {
   const [isEditing, setEditing] = useState(false);
