@@ -4,14 +4,19 @@ import Todo from "./components/Todo"
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
 
+const FILTER_MAP = {
+  All: () => true,
+  Active: (task) => !task.completed,
+  Completed: (task) => task.completed,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
   console.log(tasks);
 
-  function addTask(name) {
-    const newTask = {id: `todo-${nanoid()}`, name, completed: false};
-    setTasks([...tasks, newTask]);
-  }
+  const [filter, setFilter] = useState("All");
 
   const taskList = tasks.map((task) => (
     <Todo 
@@ -27,6 +32,11 @@ function App(props) {
 
   const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
   const tasksHeading = `${taskList.length} ${tasksNoun} remaining`;
+
+  function addTask(name) {
+    const newTask = {id: `todo-${nanoid()}`, name, completed: false};
+    setTasks([...tasks, newTask]);
+  }
 
   function toggleTaskCompleted(id) {
     console.log(tasks[0]);
